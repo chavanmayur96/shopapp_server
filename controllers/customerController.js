@@ -7,6 +7,7 @@ const addCustomer = async (req, res) => {
     await customer.save();
     res.status(201).send(customer);
   } catch (error) {
+    console.log(error)
     res.status(400).send({ error: error.message });
   }
 };
@@ -14,7 +15,7 @@ const addCustomer = async (req, res) => {
 // Get all customers
 const getAllCustomers = async (req, res) => {
   try {
-    const customers = await Customer.find();
+    const customers = await Customer.find({});
     res.send(customers);
   } catch (error) {
     res.status(500).send({ error: error.message });
